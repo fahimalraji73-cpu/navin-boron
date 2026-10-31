@@ -114,7 +114,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:46px 18px 40p
 </main>
 <script>
 // ফর্মের ডাটা পাঠানোর লিংক (আপনার PHP/API URL এখানে বসান)
-var FORM_ENDPOINT = "https://eshoplaunchers.site/navin/register.php";
+var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwV0qq_ypUlgWtJu90XPpLWKHh289vPfrrOR3Jbx7NY9suoGmD_0Z0G2GBCl5Kag1LkxA/exec";
 var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
 var f = document.getElementById("f");
@@ -130,7 +130,7 @@ f.addEventListener("submit", function(ev){
   var fd = new FormData(f);
   var b = document.getElementById("btn"), se = document.getElementById("serr");
   se.style.display = "none"; b.disabled = true; b.textContent = "পাঠানো হচ্ছে...";
-  fetch(FORM_ENDPOINT,{method:"POST",body:fd})
+  fetch(FORM_ENDPOINT,{method:"POST",body:new URLSearchParams(fd)})
     .then(function(r){return r.json()})
     .then(function(j){
       if(!j.ok) throw j.error || "সমস্যা হয়েছে";
